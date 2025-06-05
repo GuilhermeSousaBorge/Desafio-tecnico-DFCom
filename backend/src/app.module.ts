@@ -8,7 +8,7 @@ import { ReviewsModule } from './reviews/reviews.module';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb://root:example@localhost:27017/reviews-db?authSource=admin',
+      'mongodb://root:example@mongo:27017/reviews-db?authSource=admin',
     ),
     ProductsModule,
     ReviewsModule,

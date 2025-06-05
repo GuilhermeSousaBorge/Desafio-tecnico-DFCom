@@ -1,7 +1,6 @@
 # Use root/example as user/password credentials
 
 services:
-
   mongo:
     image: mongo
     restart: always
@@ -21,3 +20,20 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
       ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
       ME_CONFIG_BASICAUTH: false
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - '3000:3000'
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/nomeDoBanco
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - '5173:80'
+    depends_on:
+      - backend
