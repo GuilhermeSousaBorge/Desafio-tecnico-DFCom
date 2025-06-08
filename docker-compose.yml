@@ -28,7 +28,7 @@ services:
     environment:
       - MONGO_URL=mongodb://mongo:27017/nomeDoBanco
     depends_on:
-      - mongo
+      - mongo-express
 
   frontend:
     build: ./frontend
